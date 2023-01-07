@@ -1,16 +1,96 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>品优购</title>
-    
+    <title>
+        动态DOM编程起点和基础
+    </title>
+    <style type="text/css">
+        body {
+            perspective: 200px;
+        }
+        
+        div {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background-color: rgba(134, 123, 123, 0.5);
+            color: rgb(30, 232, 205);
+            padding: 20px;
+            border: 2px solid rgb(2, 158, 255);
+            border-radius: 50%;
+            font-size: 5px;
+            transition: all 5s;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            for (var i = 0; i < 100; i++) {
+                var divDom = document.createElement('div');
+                document.body.appendChild(divDom);
+                divDom.innerHTML = "绝代有佳人，\n幽居在空谷。\n自云良家子，\n零落依草木。"
+                var div = document.getElementsByTagName('div')[i];
+                div.id = 'div' + i;
+            }
+            start1();
+
+
+            onclick = function() {
+
+                var div = document.getElementsByTagName('div');
+                var width = window.screen.width;
+                var height = window.screen.height;
+                for (var i = 0; i < 100; i++) {
+                    var x = Math.round(Math.random() * width);
+                    var y = Math.round(Math.random() * height);
+                    var div = document.getElementById("div" + i);
+                    div.style = "transform: rotateY(360deg);"
+                    div.style.left = x + 'px';
+                    div.style.top = y + 'px';
+                }
+
+            }
+
+            onmousemove = function() {
+                start2();
+            }
+
+            function start1() {
+                var div = document.getElementsByTagName('div');
+                var add = 120;
+                var m = 0;
+                for (var i = 0; i < 20; i++) {
+                    for (var j = 0; j < 5; j++) {
+                        var div = document.getElementById("div" + m);
+                        div.style.top = add * i + 'px';
+                        div.style.left = add * j + 'px';
+                        m++;
+                    }
+                }
+            }
+
+            function start2() {
+                var div = document.getElementsByTagName('div');
+                var add = 120;
+                var m = 0;
+                for (var i = 0; i < 20; i++) {
+                    for (var j = 0; j < 5; j++) {
+                        var div = document.getElementById("div" + m);
+                        div.style = "transform: rotateY(-360deg);"
+                        div.style.top = add * i + 'px';
+                        div.style.left = add * j + 'px';
+                        m++;
+                    }
+                }
+            }
+        }
+    </script>
+
 </head>
 
 <body>
-    <h1>aaaaaaaaaaaaaaaaaaa</h1>
+
 </body>
 
 </html>
