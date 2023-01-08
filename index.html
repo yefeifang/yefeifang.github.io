@@ -39,8 +39,8 @@
             onclick = function() {
 
                 var div = document.getElementsByTagName('div');
-                var width = window.screen.width;
-                var height = window.screen.height;
+                var width = window.innerWidth;
+                var height = window.innerHeight;
 
                 for (var i = 0; i < 100; i++) {
                     var x = Math.round(Math.random() * width);
@@ -78,7 +78,7 @@
                 for (var i = 0; i < 20; i++) {
                     for (var j = 0; j < 5; j++) {
                         var div = document.getElementById("div" + m);
-                        div.style = "transform: rotateY(-360deg);"
+                        div.style = "transform: rotateY(" + deg + "deg);"
                         div.style.top = add * i + 'px';
                         div.style.left = add * j + 'px';
                         m++;
